@@ -49,9 +49,10 @@ def searchData():
 def searchByMR():
 	if request.method == 'GET':
 		mrId = '2'
-		startTime = '2016-1-1'
-		endTime = '2017-2-2' 
+		# startTime = '2016-1-1'
+		# endTime = '2017-2-2' 
 		cur = mysql.connect().cursor()
+		# cur.execute("select * from test, merit, patient where test.MRID = patient.MRID and test.MID = merit.MID and patient.MRID = %s and test.DATE >=%s and test.DATE<=%s",[mrId,startTime,endTime])
 		cur.execute("select * from test, merit, patient where test.MRID = patient.MRID and test.MID = merit.MID and patient.MRID = %s and test.DATE >=%s and test.DATE<=%s",[mrId,startTime,endTime])
 		rv = cur.fetchall();
 		patientName = ""
