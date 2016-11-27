@@ -5,7 +5,7 @@ import {Injectable} from "@angular/core";
  */
 @Injectable()
 export class Constants{
-    public BASE_URL:string = "baseurl/appname";
+    public BASE_URL:string = "http://127.0.0.1:5000";
     public LOGIN_URL:string = "/login";
     public SEARCH_URL:string = "/search";
     public UPLOAD_RECORD_URL:string = "/add";

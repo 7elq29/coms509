@@ -22,11 +22,11 @@ def hello_world():
 	rv = cur.fetchall()
 	return str(rv)
 
-@app.route('/app-name/login')
+@app.route('/login')
 def longinValid():
 	return ""
 
-@app.route('/app-name/search', methods=['GET', 'POST'])
+@app.route('/search', methods=['GET', 'POST'])
 def searchData():
 	if request.method == 'POST':
 		data = request.data
@@ -45,7 +45,7 @@ def searchData():
 		res = {'result':{}}
 		return jsonify(**res)
 
-@app.route('/app-name/searchByMR',methods=['GET', 'POST'])
+@app.route('/searchByMR',methods=['GET', 'POST'])
 def searchByMR():
 	if request.method == 'GET':
 		mrId = '2'
@@ -67,7 +67,7 @@ def searchByMR():
 	else: 
 		return Response(status=404)
 
-@app.route('/app-name/add',methods=['GET', 'POST','PUT'])
+@app.route('/add',methods=['GET', 'POST','PUT'])
 def addRecord():
 	if request.method == 'PUT':
 		mrid = '1'
@@ -91,7 +91,7 @@ def addRecord():
 	
 
 
-@app.route('/app-name/update',methods=['GET', 'POST'])
+@app.route('/update',methods=['GET', 'POST'])
 def updateRecord():
 	if request.method == 'POST':
 		mrid = '1'
@@ -112,16 +112,6 @@ def updateRecord():
 	else :
 		return Response(status=404)
 
-@app.route('/app-name/test',methods=['GET', 'POST'])
-def test():
-	data = request.data
-	dataDict = json.loads(data)
-	con = mysql.get_db()
-	cur = con.cursor()
-	for row in dataDict:
-		cur.execute("insert into merit(MID, TINDCATOR,ABBRNAME,UNIT,MINVAL) values(%s,%s,%s,%s,%s)",[row["mid"],row["name"],row["abbr"],row["unit"],0])
-		con.commit()
-	return "ok"
 
 if __name__ == '__main__':
 	app.run()
