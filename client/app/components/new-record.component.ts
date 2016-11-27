@@ -33,7 +33,7 @@ export class NewRecordComponent implements AfterViewInit{
                 private http:HttpService,
                 private router:Router){
         for(let test of this.constants.tests){
-            this.tests.push(new TestRecord(test.abbr,"",test.hint,test.unit,""));
+            this.tests.push(new TestRecord(test.abbr,"",test.hint,test.unit,null));
         }
     }
 

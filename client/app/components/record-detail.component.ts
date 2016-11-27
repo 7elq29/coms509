@@ -27,10 +27,10 @@ export class DetailComponent implements AfterViewInit{
     ownerName: string;
     table={};
     tests:any;
-    schedule:string[]=[];
+    schedule:Date[]=[];
     alert:string="";
 
-    currentTime:string;
+    currentTime:Date;
     currentAbbr:string;
     currentValue:string;
     changed:TestRecord[]=[];
@@ -87,14 +87,15 @@ export class DetailComponent implements AfterViewInit{
             this.name=data.patientName;
             this.ownerName=data.ownerName;
             for(let test of data.tests){
-                if(this.table[test.time]==null){
-                    this.table[test.time]={};
-                    this.schedule.push(test.time);
+                let date=new Date(test.time);
+                if(this.table[date]==null){
+                    this.table[date]={};
+                    this.schedule.push(date);
                 }
-                this.table[test.time][test.testAbbr]=new TestRecord(test.testAbbr,test.value,"",test.unit,test.time);
+                this.table[date][test.testAbbr]=new TestRecord(test.testAbbr,test.value,"",test.unit,date);
             }
         }
-        this.schedule = this.schedule.sort((n1:string,n2:string)=> Number(n2) - Number(n1));
+        this.schedule = this.schedule.sort((n1:Date,n2:Date)=> n2.getUTCMilliseconds()-n1.getUTCMilliseconds());
     }
 
     formatTime(timestamp):string{
@@ -136,7 +137,7 @@ export class DetailComponent implements AfterViewInit{
             .subscribe((data)=>this.handleUpdate(data));
         this.currentValue="";
         this.currentAbbr="";
-        this.currentTime="";
+        this.currentTime=null;
     }
 
     handleUpdate(data:Response):void{

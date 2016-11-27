@@ -26,7 +26,7 @@ var NewRecordComponent = (function () {
         this.available = false;
         for (var _i = 0, _a = this.constants.tests; _i < _a.length; _i++) {
             var test = _a[_i];
-            this.tests.push(new testrecord_1.TestRecord(test.abbr, "", test.hint, test.unit, ""));
+            this.tests.push(new testrecord_1.TestRecord(test.abbr, "", test.hint, test.unit, null));
         }
     }
     NewRecordComponent.prototype.testAvailable = function () {

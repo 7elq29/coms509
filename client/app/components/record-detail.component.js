@@ -74,14 +74,15 @@ var DetailComponent = (function () {
             this.ownerName = data.ownerName;
             for (var _i = 0, _a = data.tests; _i < _a.length; _i++) {
                 var test = _a[_i];
-                if (this.table[test.time] == null) {
-                    this.table[test.time] = {};
-                    this.schedule.push(test.time);
+                var date = new Date(test.time);
+                if (this.table[date] == null) {
+                    this.table[date] = {};
+                    this.schedule.push(date);
                 }
-                this.table[test.time][test.testAbbr] = new testrecord_1.TestRecord(test.testAbbr, test.value, "", test.unit, test.time);
+                this.table[date][test.testAbbr] = new testrecord_1.TestRecord(test.testAbbr, test.value, "", test.unit, date);
             }
         }
-        this.schedule = this.schedule.sort(function (n1, n2) { return Number(n2) - Number(n1); });
+        this.schedule = this.schedule.sort(function (n1, n2) { return n2.getUTCMilliseconds() - n1.getUTCMilliseconds(); });
     };
     DetailComponent.prototype.formatTime = function (timestamp) {
         var date = new Date(timestamp * 1000);
@@ -124,7 +125,7 @@ var DetailComponent = (function () {
             .subscribe(function (data) { return _this.handleUpdate(data); });
         this.currentValue = "";
         this.currentAbbr = "";
-        this.currentTime = "";
+        this.currentTime = null;
     };
     DetailComponent.prototype.handleUpdate = function (data) {
         if (data.status != angular_in_memory_web_api_1.STATUS.OK) {

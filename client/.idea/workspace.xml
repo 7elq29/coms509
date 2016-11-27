@@ -36,8 +36,8 @@
       <file leaf-file-name="new-record.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/components/new-record.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="67" column="64" selection-start-line="67" selection-start-column="64" selection-end-line="67" selection-end-column="64" />
+            <state relative-caret-position="165">
+              <caret line="35" column="80" selection-start-line="35" selection-start-column="80" selection-end-line="35" selection-end-column="80" />
               <folding>
                 <element signature="e#424#462#0" expanded="false" />
               </folding>
@@ -45,13 +45,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="record-detail.component.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="record-detail.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/components/record-detail.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="91" column="50" selection-start-line="91" selection-start-column="50" selection-end-line="91" selection-end-column="50" />
+            <state relative-caret-position="285">
+              <caret line="107" column="30" selection-start-line="107" selection-start-column="30" selection-end-line="107" selection-end-column="30" />
               <folding>
                 <element signature="e#0#86#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="testrecord.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/components/testrecord.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+              <folding>
+                <element signature="n#!!doc;n#TestRecord#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -61,10 +73,10 @@
         <entry file="file://$PROJECT_DIR$/app/views/record-detail.component.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="166">
-              <caret line="44" column="23" selection-start-line="44" selection-start-column="23" selection-end-line="44" selection-end-column="23" />
+              <caret line="44" column="108" selection-start-line="44" selection-start-column="108" selection-end-line="44" selection-end-column="108" />
               <folding>
                 <element signature="n#style#0;n#button#0;n#div#2;n#div#0;n#!!top" expanded="true" />
-                <element signature="e#2865#2872#0" expanded="true" />
+                <element signature="e#2952#2959#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -80,21 +92,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="homepage.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/components/homepage.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="23" column="32" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mock-http.service.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="mock-http.service.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/test/mock-http.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="164" column="17" selection-start-line="164" selection-start-column="17" selection-end-line="164" selection-end-column="17" />
+            <state relative-caret-position="207">
+              <caret line="155" column="94" selection-start-line="155" selection-start-column="94" selection-end-line="155" selection-end-column="94" />
               <folding>
                 <element signature="n#!!doc;n#MockHttp#0" expanded="false" />
               </folding>
@@ -163,7 +165,6 @@
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/systemjs.config.js" />
         <option value="$PROJECT_DIR$/app/css/basic.css" />
-        <option value="$PROJECT_DIR$/app/components/testrecord.ts" />
         <option value="$PROJECT_DIR$/app/css/detail.css" />
         <option value="$PROJECT_DIR$/app/components/new-admin.component.html" />
         <option value="$PROJECT_DIR$/app/views/navbar.component.html" />
@@ -176,9 +177,10 @@
         <option value="$PROJECT_DIR$/app/services/user.service.ts" />
         <option value="$PROJECT_DIR$/app/components/navbar.component.ts" />
         <option value="$PROJECT_DIR$/app/components/search.component.ts" />
+        <option value="$PROJECT_DIR$/app/components/testrecord.ts" />
+        <option value="$PROJECT_DIR$/app/components/new-record.component.ts" />
         <option value="$PROJECT_DIR$/app/components/record-detail.component.ts" />
         <option value="$PROJECT_DIR$/app/test/mock-http.service.ts" />
-        <option value="$PROJECT_DIR$/app/components/new-record.component.ts" />
         <option value="$PROJECT_DIR$/app/views/record-detail.component.html" />
       </list>
     </option>
@@ -418,12 +420,12 @@
       <workItem from="1479761742282" duration="15330000" />
       <workItem from="1479864948979" duration="4548000" />
       <workItem from="1480026882584" duration="10197000" />
-      <workItem from="1480186979155" duration="27633000" />
+      <workItem from="1480186979155" duration="28585000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57982000" />
+    <option name="totallyTimeSpent" value="58934000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="796" extended-state="6" />
@@ -782,16 +784,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/testrecord.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
-          <folding>
-            <element signature="n#!!doc;n#TestRecord#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/services/Constants.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -844,12 +836,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/test/mock-http.service.ts">
+    <entry file="file://$PROJECT_DIR$/app/components/new-record.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="164" column="17" selection-start-line="164" selection-start-column="17" selection-end-line="164" selection-end-column="17" />
+        <state relative-caret-position="165">
+          <caret line="35" column="80" selection-start-line="35" selection-start-column="80" selection-end-line="35" selection-end-column="80" />
           <folding>
-            <element signature="n#!!doc;n#MockHttp#0" expanded="false" />
+            <element signature="e#424#462#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/testrecord.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+          <folding>
+            <element signature="n#!!doc;n#TestRecord#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/new-record.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1000">
+          <caret line="74" column="97" selection-start-line="74" selection-start-column="97" selection-end-line="74" selection-end-column="97" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/record-detail.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="107" column="30" selection-start-line="107" selection-start-column="30" selection-end-line="107" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#86#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -862,41 +882,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/new-record.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1000">
-          <caret line="74" column="97" selection-start-line="74" selection-start-column="97" selection-end-line="74" selection-end-column="97" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/new-record.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="67" column="64" selection-start-line="67" selection-start-column="64" selection-end-line="67" selection-end-column="64" />
-          <folding>
-            <element signature="e#424#462#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/record-detail.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="166">
-          <caret line="44" column="23" selection-start-line="44" selection-start-column="23" selection-end-line="44" selection-end-column="23" />
+          <caret line="44" column="108" selection-start-line="44" selection-start-column="108" selection-end-line="44" selection-end-column="108" />
           <folding>
             <element signature="n#style#0;n#button#0;n#div#2;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#2865#2872#0" expanded="true" />
+            <element signature="e#2952#2959#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/record-detail.component.ts">
+    <entry file="file://$PROJECT_DIR$/app/test/mock-http.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="91" column="50" selection-start-line="91" selection-start-column="50" selection-end-line="91" selection-end-column="50" />
+        <state relative-caret-position="207">
+          <caret line="155" column="94" selection-start-line="155" selection-start-column="94" selection-end-line="155" selection-end-column="94" />
           <folding>
-            <element signature="e#0#86#0" expanded="true" />
+            <element signature="n#!!doc;n#MockHttp#0" expanded="false" />
           </folding>
         </state>
       </provider>

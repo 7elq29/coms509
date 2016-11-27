@@ -150,10 +150,10 @@ export class MockHttp{
 
     doDetail(mr:string,start:string,end:string):Observable<Response>{
         let alltests=[
-            {testAbbr: 'PCV', unit: '%', value:'0.5',time:Date.parse("11/12/2016 2:02 PM")/1000},
-            {testAbbr: 'Glu', unit: 'mg/dl', value:'88',time:Date.parse("11/12/2016 2:02 PM")/1000},
-            {testAbbr: 'Lac', unit: 'mmol/dl', value:'low',time:Date.parse("11/12/2016 3:42 PM")/1000},
-            {testAbbr: 'Lac', unit: 'mmol/dl', value:'48',time:Date.parse("10/1/2016 3:42 PM")/1000},
+            {testAbbr: 'PCV', unit: '%', value:'0.5',time:Date.parse("11/12/2016 2:02 PM")},
+            {testAbbr: 'Glu', unit: 'mg/dl', value:'88',time:Date.parse("11/12/2016 2:02 PM")},
+            {testAbbr: 'Lac', unit: 'mmol/dl', value:'low',time:Date.parse("11/12/2016 3:42 PM")},
+            {testAbbr: 'Lac', unit: 'mmol/dl', value:'48',time:Date.parse("10/1/2016 3:42 PM")},
         ];
         let test=[];
         if(start==null || end==null){

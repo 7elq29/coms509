@@ -6,9 +6,9 @@ export class TestRecord{
     value:string;
     hint:string;
     unit:string;
-    time:string;
+    time:Date;
 
-    constructor(abbr:string, value:string, hint:string, unit:string, time:string){
+    constructor(abbr:string, value:string, hint:string, unit:string, time:Date){
         this.abbr=abbr;
         this.value=value;
         this.hint=hint;
