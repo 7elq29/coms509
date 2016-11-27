@@ -164,12 +164,12 @@ var MockHttp = (function () {
         else {
             for (var _i = 0, alltests_1 = alltests; _i < alltests_1.length; _i++) {
                 var t = alltests_1[_i];
-                if (t.time >= start && t.time <= end) {
+                if (Number(t.time) >= Number(start) && Number(t.time) <= Number(end)) {
                     test.push(t);
                 }
             }
         }
-        var response = new http_1.Response(new http_1.ResponseOptions(mr != "123456" ?
+        var response = new http_1.Response(new http_1.ResponseOptions((mr != "123456" && mr != 'puppy') ?
             {
                 body: {
                     MRNo: '1234567890',

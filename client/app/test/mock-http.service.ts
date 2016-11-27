@@ -160,14 +160,14 @@ export class MockHttp{
             test=alltests;
         }else{
             for(let t of alltests){
-                if(t.time>=start && t.time<=end){
+                if(Number(t.time)>=Number(start) && Number(t.time)<=Number(end)){
                     test.push(t);
                 }
             }
         }
         let response:Response=new Response(
             new ResponseOptions(
-                mr!="123456"?
+                (mr!="123456" && mr!='puppy')?
                 {
                     body: {
                         MRNo: '1234567890',

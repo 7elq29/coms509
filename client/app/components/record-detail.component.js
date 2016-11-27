@@ -43,7 +43,7 @@ var DetailComponent = (function () {
     DetailComponent.prototype.doSearch = function () {
         var from = Date.parse($(this.frominput.nativeElement).val()) / 1000;
         var end = Date.parse($(this.toinput.nativeElement).val()) / 1000;
-        this.search(from, end);
+        this.search(from + "", end + "");
     };
     DetailComponent.prototype.search = function (start, end) {
         var _this = this;
@@ -81,7 +81,7 @@ var DetailComponent = (function () {
                 this.table[test.time][test.testAbbr] = new testrecord_1.TestRecord(test.testAbbr, test.value, "", test.unit, test.time);
             }
         }
-        this.schedule = this.schedule.sort(function (n1, n2) { return n2 - n1; });
+        this.schedule = this.schedule.sort(function (n1, n2) { return Number(n2) - Number(n1); });
     };
     DetailComponent.prototype.formatTime = function (timestamp) {
         var date = new Date(timestamp * 1000);

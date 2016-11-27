@@ -41,10 +41,20 @@ export class SearchComponent implements OnInit{
     search():void{
         this.keyword=this.buffer;
         this.results=[];
-        this.http.post(this.constants.BASE_URL+this.constants.SEARCH_URL,{keyword:this.keyword})
-            .subscribe(
-                (data) => this.handleSearch(data)
-            )
+
+        this.http.get(this.constants.BASE_URL+this.constants.DETAIL_URL+"/"+this.keyword)
+            .subscribe((data) => this.handle(data));
+    }
+
+    handle(response:Response):void {
+        if (response.status == STATUS.OK) {
+            this.router.navigate(["/record",this.keyword]);
+        } else {
+            this.http.post(this.constants.BASE_URL+this.constants.SEARCH_URL,{keyword:this.keyword})
+                .subscribe(
+                    (data) => this.handleSearch(data)
+                )
+        }
     }
 
     handleSearch(data:Response):void{

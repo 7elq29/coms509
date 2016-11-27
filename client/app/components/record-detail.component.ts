@@ -58,7 +58,7 @@ export class DetailComponent implements AfterViewInit{
     doSearch(){
         let from=Date.parse($(this.frominput.nativeElement).val())/1000;
         let end=Date.parse($(this.toinput.nativeElement).val())/1000;
-        this.search(from,end);
+        this.search(from+"",end+"");
     }
 
     search(start:string,end:string){
@@ -94,7 +94,7 @@ export class DetailComponent implements AfterViewInit{
                 this.table[test.time][test.testAbbr]=new TestRecord(test.testAbbr,test.value,"",test.unit,test.time);
             }
         }
-        this.schedule = this.schedule.sort((n1:string,n2:string)=> n2 - n1);
+        this.schedule = this.schedule.sort((n1:string,n2:string)=> Number(n2) - Number(n1));
     }
 
     formatTime(timestamp):string{
