@@ -7,6 +7,8 @@ import {HttpService} from "../services/http.service";
 import {Constants} from "../services/Constants";
 import {Response} from "@angular/http";
 import {STATUS} from "angular-in-memory-web-api";
+import {Observable} from "rxjs/Observable";
+
 
 export class SearchResult{
     name:string;
@@ -43,10 +45,22 @@ export class SearchComponent implements OnInit{
         this.results=[];
 
         this.http.get(this.constants.BASE_URL+this.constants.DETAIL_URL+"/"+this.keyword)
+            .catch((data) => this.handleError(data))
             .subscribe((data) => this.handle(data));
     }
 
-    handle(response:Response):void {
+    handleError(response:Response | any){
+        if (response.status == STATUS.OK) {
+            this.router.navigate(["/record",this.keyword]);
+        } else {
+            this.http.post(this.constants.BASE_URL+this.constants.SEARCH_URL,{keyword:this.keyword})
+                .subscribe(
+                    (data) => this.handleSearch(data)
+                )
+        }
+    }
+
+    handle(response:Response) {
         if (response.status == STATUS.OK) {
             this.router.navigate(["/record",this.keyword]);
         } else {

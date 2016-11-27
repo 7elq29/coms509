@@ -45,7 +45,18 @@ var SearchComponent = (function () {
         this.keyword = this.buffer;
         this.results = [];
         this.http.get(this.constants.BASE_URL + this.constants.DETAIL_URL + "/" + this.keyword)
+            .catch(function (data) { return _this.handleError(data); })
             .subscribe(function (data) { return _this.handle(data); });
+    };
+    SearchComponent.prototype.handleError = function (response) {
+        var _this = this;
+        if (response.status == angular_in_memory_web_api_1.STATUS.OK) {
+            this.router.navigate(["/record", this.keyword]);
+        }
+        else {
+            this.http.post(this.constants.BASE_URL + this.constants.SEARCH_URL, { keyword: this.keyword })
+                .subscribe(function (data) { return _this.handleSearch(data); });
+        }
     };
     SearchComponent.prototype.handle = function (response) {
         var _this = this;

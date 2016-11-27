@@ -27,10 +27,10 @@ export class DetailComponent implements AfterViewInit{
     ownerName: string;
     table={};
     tests:any;
-    schedule:Date[]=[];
+    schedule:any[]=[];
     alert:string="";
 
-    currentTime:Date;
+    currentTime:any;
     currentAbbr:string;
     currentValue:string;
     changed:TestRecord[]=[];
@@ -87,7 +87,7 @@ export class DetailComponent implements AfterViewInit{
             this.name=data.patientName;
             this.ownerName=data.ownerName;
             for(let test of data.tests){
-                let date=new Date(test.time);
+                let date:any=new Date(test.time);
                 if(this.table[date]==null){
                     this.table[date]={};
                     this.schedule.push(date);

@@ -152,10 +152,10 @@ var MockHttp = (function () {
     };
     MockHttp.prototype.doDetail = function (mr, start, end) {
         var alltests = [
-            { testAbbr: 'PCV', unit: '%', value: '0.5', time: Date.parse("11/12/2016 2:02 PM") },
-            { testAbbr: 'Glu', unit: 'mg/dl', value: '88', time: Date.parse("11/12/2016 2:02 PM") },
-            { testAbbr: 'Lac', unit: 'mmol/dl', value: 'low', time: Date.parse("11/12/2016 3:42 PM") },
-            { testAbbr: 'Lac', unit: 'mmol/dl', value: '48', time: Date.parse("10/1/2016 3:42 PM") },
+            { testAbbr: 'PCV', unit: '%', value: '0.5', time: "11/12/2016 2:02 PM" },
+            { testAbbr: 'Glu', unit: 'mg/dl', value: '88', time: "11/12/2016 2:02 PM" },
+            { testAbbr: 'Lac', unit: 'mmol/dl', value: 'low', time: "11/12/2016 3:42 PM" },
+            { testAbbr: 'Lac', unit: 'mmol/dl', value: '48', time: "10/1/2016 3:42 PM" },
         ];
         var test = [];
         if (start == null || end == null) {

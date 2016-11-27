@@ -14,7 +14,7 @@ var core_1 = require("@angular/core");
  */
 var Constants = (function () {
     function Constants() {
-        this.BASE_URL = "http://127.0.0.1:5000";
+        this.BASE_URL = "http://10.26.14.12:5000";
         this.LOGIN_URL = "/login";
         this.SEARCH_URL = "/search";
         this.UPLOAD_RECORD_URL = "/add";
