@@ -1,0 +1,80 @@
+<div class="container">
+    <div class="row new-record-title">Add new medical record</div>
+    <div class="row new-record margin-top-15">
+        <div class="col-md-5 input-group new-record-input">
+            <span class="input-group-addon" >MR number <span class="red">*</span> </span>
+            <input type="text" class="form-control"  [(ngModel)]="mr" aria-describedby="basic-addon3">
+            <span class="input-group-btn">
+                <button class="btn btn-primary" (click)="testAvailable()" type="button">Test patient</button>
+            </span>
+            <span class="glyphicon glyphicon-ok test-success" *ngIf="available"></span>
+        </div>
+
+        <div class="col-md-5 input-group date new-record-input" id="date" #date>
+            <span class="input-group-addon" >Date <span class="red">*</span> </span>
+            <input type='text' class="form-control"  #time />
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+    </div>
+    <div class="row new-record margin-top-15">
+        <div class="col-md-5 input-group new-record-input margin-top-15" *ngFor="let test of tests" >
+            <span class="input-group-addon" >{{test.abbr}}
+                <span class="glyphicon glyphicon-question-sign tooltip-identifier"
+                      data-toggle="tooltip" data-placement="top" title="{{test.hint}}"></span>
+            </span>
+            <input type="text" class="form-control" aria-describedby="basic-addon3" [(ngModel)]="test.value">
+            <span class="input-group-addon">{{test.unit}}</span>
+        </div>
+    </div>
+    <div class="row margin-top-15" *ngIf="alert!=''">
+        <div class="pull-right red new-record-alert">{{alert}}</div>
+    </div>
+    <div class="row margin-top-15">
+        <div class="pull-right new-record-submit">
+            <button class="btn btn-primary" type="button" (click)="submit()" >Sumbit</button>
+            <span>
+            or
+                <a href="/">Cancel</a>
+            </span>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" tabindex="-1" #uploadSucceed id="uploadSucceed" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Upload Succeed</h4>
+            </div>
+            <div class="modal-body" class="printing">
+                Printing label...
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div class="modal fade" tabindex="-1" #newPatient id="testAvailability" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Test MR number</h4>
+            </div>
+            <div class="modal-body" >
+                <label for="MRNum" class="col-sm-3 control-label">MR Number</label>
+                <input type='text' class="form-control"  id="MRNum" [(ngModel)]="mr"/>
+                <label for="patientName" class="col-sm-3 control-label">Patient Name</label>
+                <input type='text' class="form-control"  id="patientName"/>
+                <label for="ownerName" class="col-sm-3 control-label">Owner Name</label>
+                <input type='text' class="form-control"  id="ownerName"/>
+                <button type="button" class="btn btn-primary margin-top-15" (click)="addPatient()">Sumbit</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+

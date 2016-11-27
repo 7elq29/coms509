@@ -6,4 +6,9 @@
 .margin-top-30 { margin-top: 3.0em; }
 
 .margin-left-100 {margin-left: 10.0em;}
+.margin-left-30 {margin-left: 3.0em;}
+.margin-right-30 {margin-left: 3.0em;}
 
+body{
+    background: #eee;
+}

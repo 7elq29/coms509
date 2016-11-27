@@ -12,15 +12,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Created by Ken on 11/19/16.
  */
 var core_1 = require("@angular/core");
+var http_service_1 = require("../services/http.service");
+var Constants_1 = require("../services/Constants");
+var user_service_1 = require("../services/user.service");
+var router_1 = require("@angular/router");
 var HomepageComponent = (function () {
-    function HomepageComponent() {
+    function HomepageComponent(http, constants, userService, router) {
+        this.http = http;
+        this.constants = constants;
+        this.userService = userService;
+        this.router = router;
+        this.keyword = "";
     }
+    HomepageComponent.prototype.search = function () {
+        this.router.navigate(['/records', this.keyword]);
+    };
+    HomepageComponent.prototype.newRecord = function () {
+        this.router.navigate(['/record/new']);
+    };
     HomepageComponent = __decorate([
         core_1.Component({
             selector: 'home',
             templateUrl: 'app/views/homepage.component.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [http_service_1.HttpService, Constants_1.Constants, user_service_1.UserService, router_1.Router])
     ], HomepageComponent);
     return HomepageComponent;
 }());

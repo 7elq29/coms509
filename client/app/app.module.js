@@ -13,21 +13,73 @@ var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
 var homepage_component_1 = require("./components/homepage.component");
+var http_service_1 = require("./services/http.service");
+var user_service_1 = require("./services/user.service");
+var Constants_1 = require("./services/Constants");
+var test_service_1 = require("./test/test.service");
+var mock_http_service_1 = require("./test/mock-http.service");
+var router_1 = require("@angular/router");
+var search_component_1 = require("./components/search.component");
+var app_component_1 = require("./app.component");
+var new_record_component_1 = require("./components/new-record.component");
+var navbar_component_1 = require("./components/navbar.component");
+var record_detail_component_1 = require("./components/record-detail.component");
+var new_admin_component_1 = require("./components/new-admin.component");
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
             imports: [
+                router_1.RouterModule.forRoot([
+                    {
+                        path: 'home',
+                        component: homepage_component_1.HomepageComponent
+                    },
+                    {
+                        path: 'records/:keyword',
+                        component: search_component_1.SearchComponent
+                    },
+                    {
+                        path: 'record/new',
+                        component: new_record_component_1.NewRecordComponent
+                    },
+                    {
+                        path: 'record/:id',
+                        component: record_detail_component_1.DetailComponent
+                    },
+                    {
+                        path: 'admin',
+                        component: new_admin_component_1.AdminComponent
+                    },
+                    {
+                        path: '',
+                        redirectTo: '/home',
+                        pathMatch: 'full'
+                    }
+                ]),
                 platform_browser_1.BrowserModule,
                 forms_1.FormsModule,
                 http_1.HttpModule
             ],
             declarations: [
-                homepage_component_1.HomepageComponent
+                homepage_component_1.HomepageComponent,
+                search_component_1.SearchComponent,
+                app_component_1.AppComponent,
+                new_record_component_1.NewRecordComponent,
+                navbar_component_1.NavBarComponent,
+                record_detail_component_1.DetailComponent,
+                new_admin_component_1.AdminComponent
+            ],
+            providers: [
+                http_service_1.HttpService,
+                user_service_1.UserService,
+                Constants_1.Constants,
+                test_service_1.Test,
+                mock_http_service_1.MockHttp
             ],
             bootstrap: [
-                homepage_component_1.HomepageComponent
+                app_component_1.AppComponent
             ]
         }), 
         __metadata('design:paramtypes', [])

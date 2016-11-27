@@ -1,0 +1,28 @@
+.search-bar-top{
+    margin-top:25px
+}
+
+.search-bar-top input{
+    width:80%
+}
+
+.search-result{
+    background-color: #FFF;
+    border-radius: 3px;
+    border-bottom: 2px solid #ccc;
+    cursor: pointer;
+}
+
+.search-result .search-result-name{
+    width:150px;
+    float:left;
+    margin-left: 30px;
+    font-weight: 800;
+    font-size:larger;
+}
+
+.search-result .search-result-mr{
+    width:150px;
+    float:left;
+    font-weight:300;
+}

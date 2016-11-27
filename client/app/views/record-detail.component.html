@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="row">
+        <div class="row margin-top-15 col-md-4"><span class="detail-title">MR number: </span>  {{id}}</div>
+        <div class="row margin-top-15 col-md-4"><span class="detail-title">Name: </span>  {{name}}</div>
+        <div class="row margin-top-15 col-md-4"><span class="detail-title">Owner name: </span>  {{ownerName}}</div>
+    </div>
+    <div class="row margin-top-15">
+
+        <div class="col-md-5">
+            <div class="col-md-5 selecttime-title"> Select a time range from</div>
+            <div class="col-md-7 input-group date new-record-input" id="date" #fromdate>
+                <input type='text' class="form-control"  #frominput />
+                <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="col-md-2 selecttime-title"> to </div>
+            <div class="col-md-9 input-group date new-record-input" id="date" #todate>
+                <input type='text' class="form-control"  #toinput />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="btn-group" role="group" >
+                <button type="button" class="btn btn-primary edit-btn" (click)="doSearch()" >Search</button>
+                <button type="button" class="btn btn-primary edit-btn" (click)="print()" >Print</button>
+            </div>
+        </div>
+
+    </div>
+    <table class="table table-striped table-bordered row margin-top-15">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th *ngFor="let test of tests">{{test.abbr}}({{test.unit}})</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let key of schedule">
+            <th>{{formatTime(key)}}</th>
+            <td [ngClass]="isAdmin()?'cellpointer':'cell'" (click)="showModal(key,test.abbr)"  *ngFor="let test of tests">
+                <a *ngIf="isAdmin()">{{table[key][test.abbr]==null ? "":  table[key][test.abbr].value}}</a>
+                <span *ngIf="!isAdmin()">{{table[key][test.abbr]==null ? "":  table[key][test.abbr].value}}</span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" tabindex="-1" #changeValue role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Change value</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="currentValue" class="col-sm-3 control-label">New Value</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="currentValue" id="currentValue" [(ngModel)]="currentValue">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="red new-record-alert" *ngIf="alert!=''">{{alert}}</div>
+                <button type="button" class="btn btn-default" (click)="change()">Change</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

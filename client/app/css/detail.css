@@ -1,0 +1,23 @@
+.detail-title{
+    margin-top: 30px;
+    margin-right: 15px;
+    font-size: larger;
+    font-weight: 600;
+}
+
+.selecttime-title{
+    margin-top:15px;;
+}
+
+.edit-btn{
+    width:120px;
+}
+
+.cell{
+    text-align: center;
+}
+
+.cellpointer{
+    text-align: center;
+    cursor: pointer;
+}
