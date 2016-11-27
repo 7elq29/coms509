@@ -84,6 +84,9 @@ var DetailComponent = (function () {
         }
         this.schedule = this.schedule.sort(function (n1, n2) { return n2.getUTCMilliseconds() - n1.getUTCMilliseconds(); });
     };
+    DetailComponent.prototype.goHome = function () {
+        this.router.navigate(['']);
+    };
     DetailComponent.prototype.formatTime = function (timestamp) {
         var date = new Date(timestamp * 1000);
         return date.toLocaleDateString() + " " + date.toLocaleTimeString();

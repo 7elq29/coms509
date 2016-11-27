@@ -98,6 +98,10 @@ export class DetailComponent implements AfterViewInit{
         this.schedule = this.schedule.sort((n1:Date,n2:Date)=> n2.getUTCMilliseconds()-n1.getUTCMilliseconds());
     }
 
+    goHome(){
+        this.router.navigate(['']);
+    }
+
     formatTime(timestamp):string{
         let date=new Date(timestamp*1000);
         return date.toLocaleDateString()+" "+date.toLocaleTimeString();
