@@ -41,7 +41,8 @@
         </thead>
         <tbody>
         <tr *ngFor="let key of schedule">
-            <th>{{formatTime(key)}}</th>
+            <!--<th>{{formatTime(key)}}</th>-->
+            <th>{{key}}</th>
             <td [ngClass]="isAdmin()?'cellpointer':'cell'" (click)="showModal(key,test.abbr)"  *ngFor="let test of tests">
                 <a *ngIf="isAdmin()">{{table[key][test.abbr]==null ? "":  table[key][test.abbr].value}}</a>
                 <span *ngIf="!isAdmin()">{{table[key][test.abbr]==null ? "":  table[key][test.abbr].value}}</span>
@@ -49,6 +50,9 @@
         </tr>
         </tbody>
     </table>
+    <div class="row pull-right">
+        <button type="button" class="btn btn-primary" style="margin-right: 30px">Return</button>
+    </div>
 </div>
 
 <div class="modal fade" tabindex="-1" #changeValue role="dialog">

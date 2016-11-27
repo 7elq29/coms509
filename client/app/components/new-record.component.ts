@@ -65,7 +65,7 @@ export class NewRecordComponent implements AfterViewInit{
             return;
         }
         let values=[];
-        let time=Date.parse($(this.timeEle.nativeElement).val())/1000;
+        let time=Date.parse($(this.timeEle.nativeElement).val());
 
         for(let test of this.tests){
             if(test.value.trim()!=""){

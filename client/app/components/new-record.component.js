@@ -57,7 +57,7 @@ var NewRecordComponent = (function () {
             return;
         }
         var values = [];
-        var time = Date.parse($(this.timeEle.nativeElement).val()) / 1000;
+        var time = Date.parse($(this.timeEle.nativeElement).val());
         for (var _i = 0, _a = this.tests; _i < _a.length; _i++) {
             var test = _a[_i];
             if (test.value.trim() != "") {
