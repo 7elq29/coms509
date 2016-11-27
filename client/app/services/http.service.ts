@@ -12,7 +12,6 @@ export class HttpService{
 
     constructor(private userService:UserService, private ngHttp:Http, private mockHttp:MockHttp){
         this.http=ngHttp;
-        this.mock();
     }
 
     mock():void{

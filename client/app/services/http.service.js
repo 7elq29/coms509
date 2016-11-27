@@ -21,7 +21,6 @@ var HttpService = (function () {
         this.ngHttp = ngHttp;
         this.mockHttp = mockHttp;
         this.http = ngHttp;
-        this.mock();
     }
     HttpService.prototype.mock = function () {
         this.http = this.mockHttp;
