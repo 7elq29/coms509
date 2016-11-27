@@ -2,10 +2,13 @@ from flask import Flask, request
 from flask import Response
 from flaskext.mysql import MySQL
 from flask import jsonify
+from flask_cors import CORS, cross_origin
 import json
+import datetime
 
 app = Flask(__name__)
 mysql = MySQL()
+CORS(app)
 # MySQL configurations
 app.config['MYSQL_DATABASE_USER'] = 'root'
 app.config['MYSQL_DATABASE_PASSWORD'] = ''
@@ -17,21 +20,19 @@ mysql.init_app(app)
 
 @app.route('/')
 def hello_world():
-	cur = mysql.connect().cursor()
-	# cur.execute('''select * from test, merit, patient where test.MRID = patient.MRID and test.MID = merit.MID''')
-	rv = cur.fetchall()
-	return str(rv)
+	return "server side"
 
 @app.route('/login')
 def longinValid():
-	return ""
+	res = {"status":"success","message":"longin success"}
+	return res
 
 @app.route('/search', methods=['GET', 'POST'])
 def searchData():
 	if request.method == 'POST':
 		data = request.data
 		dataDict = json.loads(data)
-		keyWord = "%Ann%"
+		keyWord = "Ann"
 		cur = mysql.connect().cursor()
 		cur.execute("select patient.PNAME, patient.MRID from test, merit, patient where test.MRID = patient.MRID and test.MID = merit.MID and patient.`PNAME` like %s", [keyWord])
 		rv = cur.fetchall();
@@ -45,16 +46,23 @@ def searchData():
 		res = {'result':{}}
 		return jsonify(**res)
 
-@app.route('/searchByMR',methods=['GET', 'POST'])
-def searchByMR():
+@app.route('/searchByMR/<int:mrid>',methods=['GET', 'POST'])
+def searchByMR(mrid):
 	if request.method == 'GET':
-		mrId = '2'
-		# startTime = '2016-1-1'
-		# endTime = '2017-2-2' 
+		print "mrid:"+str(mrid)
+		startTime = request.args.get("starttime")
+		endTime = request.args.get("endtime")
 		cur = mysql.connect().cursor()
-		# cur.execute("select * from test, merit, patient where test.MRID = patient.MRID and test.MID = merit.MID and patient.MRID = %s and test.DATE >=%s and test.DATE<=%s",[mrId,startTime,endTime])
-		cur.execute("select * from test, merit, patient where test.MRID = patient.MRID and test.MID = merit.MID and patient.MRID = %s and test.DATE >=%s and test.DATE<=%s",[mrId,startTime,endTime])
+		if startTime and endTime:
+			startT = datetime.datetime.fromtimestamp(float(startTime))
+			endT = datetime.datetime.fromtimestamp(float(endTime))
+			cur.execute("select * from test, merit, patient where test.MRID = patient.MRID and test.MID = merit.MID and patient.MRID = %s and test.DATE >=%s and test.DATE<=%s",[mrid,startT,endT])
+		else :
+			cur.execute("select * from test, merit, patient where test.MRID = patient.MRID and test.MID = merit.MID and patient.MRID = %s ",[mrid])
 		rv = cur.fetchall();
+		if(len(rv) == 0) :
+			return Response(status=404)
+
 		patientName = ""
 		ownerName = ""
 		resList = []
@@ -63,7 +71,7 @@ def searchByMR():
 			ownerName = row[13]
 			item = {'testAbbr':row[7],'unit':row[8],'value':row[4],'time':row[2]}
 			resList.append(item)
-		res = {'MRNo':mrId,'patientName':patientNme,'ownerName':ownerName,'tests':resList}
+		res = {'MRNo':mrid,'patientName':patientNme,'ownerName':ownerName,'tests':resList}
 		return jsonify(**res)
 	else: 
 		return Response(status=404)
@@ -115,4 +123,5 @@ def updateRecord():
 
 
 if __name__ == '__main__':
-	app.run()
+	app.run(host='10.26.14.12')
+	# app.run()
