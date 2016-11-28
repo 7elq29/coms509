@@ -41,8 +41,8 @@ var DetailComponent = (function () {
         this.search("", "");
     };
     DetailComponent.prototype.doSearch = function () {
-        var from = Date.parse($(this.frominput.nativeElement).val()) / 1000;
-        var end = Date.parse($(this.toinput.nativeElement).val()) / 1000;
+        var from = Date.parse($(this.frominput.nativeElement).val());
+        var end = Date.parse($(this.toinput.nativeElement).val());
         this.search(from + "", end + "");
     };
     DetailComponent.prototype.search = function (start, end) {
@@ -96,7 +96,7 @@ var DetailComponent = (function () {
         this.router.navigate(['/']);
     };
     DetailComponent.prototype.formatTime = function (timestamp) {
-        var date = new Date(timestamp * 1000);
+        var date = new Date(timestamp);
         return date.toLocaleDateString() + " " + date.toLocaleTimeString();
     };
     DetailComponent.prototype.showModal = function (time, abbr) {
@@ -129,7 +129,7 @@ var DetailComponent = (function () {
                 mid: this.constant.getTestByAbbr(test.abbr).mid,
                 testAbbr: test.abbr,
                 value: test.value,
-                time: test.time
+                time: test.time.getTime() / 1000
             });
         }
         this.http.post(this.constant.BASE_URL + this.constant.UPDATE_URL, data)

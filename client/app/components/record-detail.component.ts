@@ -32,7 +32,7 @@ export class DetailComponent implements AfterViewInit{
     alert:string="";
 
 
-    currentTime:any;
+    currentTime:Date;
     currentAbbr:string;
     currentValue:string;
     changed:TestRecord[]=[];
@@ -58,8 +58,8 @@ export class DetailComponent implements AfterViewInit{
     }
 
     doSearch(){
-        let from=Date.parse($(this.frominput.nativeElement).val())/1000;
-        let end=Date.parse($(this.toinput.nativeElement).val())/1000;
+        let from=Date.parse($(this.frominput.nativeElement).val());
+        let end=Date.parse($(this.toinput.nativeElement).val());
         this.search(from+"",end+"");
     }
 
@@ -115,7 +115,7 @@ export class DetailComponent implements AfterViewInit{
     }
 
     formatTime(timestamp):string{
-        let date=new Date(timestamp*1000);
+        let date=new Date(timestamp);
         return date.toLocaleDateString()+" "+date.toLocaleTimeString();
     }
 
@@ -146,7 +146,7 @@ export class DetailComponent implements AfterViewInit{
                 mid: this.constant.getTestByAbbr(test.abbr).mid,
                 testAbbr: test.abbr,
                 value: test.value,
-                time: test.time
+                time: test.time.getTime()/1000
             });
         }
         this.http.post(this.constant.BASE_URL+this.constant.UPDATE_URL,data)
