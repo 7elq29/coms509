@@ -115,7 +115,9 @@ def updateRecord():
 			return Response(status=404)
 		for row in dataList:
 			print str(row)
-			cur.execute("update test set test.TESTVALUE = %s where test.MRID = %s and test.MID = %s and test.DATE = %s",[row["value"],mrid,row["mid"],row["time"]])
+			dateTime = datetime.datetime.fromtimestamp(float(row["time"]))
+			print "dateTime:"+str(dateTime)
+			cur.execute("update test set test.TESTVALUE = %s where test.MRID = %s and test.MID = %s and test.DATE = %s",[row["value"],mrid,row["mid"],dateTime])
 			con.commit()
 		res = {"status":"success","message":""}
 		return jsonify(res)
@@ -144,5 +146,5 @@ def addPatient(mrid):
 		return jsonify(res)
 
 if __name__ == '__main__':
-	app.run(host='10.29.180.123')
+	app.run()
 	# app.run()
