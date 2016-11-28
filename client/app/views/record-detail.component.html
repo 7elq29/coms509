@@ -42,7 +42,7 @@
         <tbody>
         <tr *ngFor="let key of schedule">
             <!--<th>{{formatTime(key)}}</th>-->
-            <th>{{key.getMonth()+"/"+key.getDate()+"/"+key.getFullYear()+" "+key.getHours()+":"+key.getMinutes()}}</th>
+            <th>{{key.toLocaleDateString()+" "+key.toLocaleTimeString()}}</th>
             <td [ngClass]="isAdmin()?'cellpointer':'cell'" (click)="showModal(key,test.abbr)"  *ngFor="let test of tests">
                 <a *ngIf="isAdmin()">{{table[key][test.abbr]==null ? "":  table[key][test.abbr].value}}</a>
                 <span *ngIf="!isAdmin()">{{table[key][test.abbr]==null ? "":  table[key][test.abbr].value}}</span>
