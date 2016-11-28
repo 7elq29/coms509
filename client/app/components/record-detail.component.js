@@ -41,13 +41,13 @@ var DetailComponent = (function () {
         this.search("", "");
     };
     DetailComponent.prototype.doSearch = function () {
-        var from = Date.parse($(this.frominput.nativeElement).val());
-        var end = Date.parse($(this.toinput.nativeElement).val());
+        var from = Date.parse($(this.frominput.nativeElement).val()) / 1000;
+        var end = Date.parse($(this.toinput.nativeElement).val()) / 1000;
         this.search(from + "", end + "");
     };
     DetailComponent.prototype.search = function (start, end) {
         var _this = this;
-        if (start == null || start == "" || end == null || end == "") {
+        if (start == null || start == "" || end == null || end == "" || start == "NaN" || end == "NaN") {
             this.http.get(this.constant.BASE_URL + this.constant.DETAIL_URL + "/" + this.id)
                 .subscribe(function (data) { return _this.handle(data); });
         }
@@ -120,7 +120,7 @@ var DetailComponent = (function () {
         }
         this.changed.push(this.table[this.currentTime][this.currentAbbr]);
         var data = {
-            MRNo: this.id,
+            MRNo: this.id + "",
             test: []
         };
         for (var _i = 0, _a = this.changed; _i < _a.length; _i++) {
@@ -129,7 +129,7 @@ var DetailComponent = (function () {
                 mid: this.constant.getTestByAbbr(test.abbr).mid,
                 testAbbr: test.abbr,
                 value: test.value,
-                time: test.time.getTime() / 1000
+                time: test.time.getTime() / 1000 + ""
             });
         }
         this.http.post(this.constant.BASE_URL + this.constant.UPDATE_URL, data)

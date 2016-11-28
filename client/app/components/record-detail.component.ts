@@ -58,14 +58,14 @@ export class DetailComponent implements AfterViewInit{
     }
 
     doSearch(){
-        let from=Date.parse($(this.frominput.nativeElement).val());
-        let end=Date.parse($(this.toinput.nativeElement).val());
+        let from=Date.parse($(this.frominput.nativeElement).val())/1000;
+        let end=Date.parse($(this.toinput.nativeElement).val())/1000;
         this.search(from+"",end+"");
     }
 
 
     search(start:string,end:string){
-        if(start==null || start=="" || end==null || end==""){
+        if(start==null || start=="" || end==null || end=="" || start=="NaN" || end=="NaN"){
             this.http.get(this.constant.BASE_URL+this.constant.DETAIL_URL+"/"+this.id)
                 .subscribe((data) => this.handle(data));
         }else{
@@ -138,7 +138,7 @@ export class DetailComponent implements AfterViewInit{
         }
         this.changed.push(this.table[this.currentTime][this.currentAbbr]);
         let data= {
-            MRNo: this.id,
+            MRNo: this.id+"",
             test: []
         };
         for(let test of this.changed){
@@ -146,7 +146,7 @@ export class DetailComponent implements AfterViewInit{
                 mid: this.constant.getTestByAbbr(test.abbr).mid,
                 testAbbr: test.abbr,
                 value: test.value,
-                time: test.time.getTime()/1000
+                time: test.time.getTime()/1000+""
             });
         }
         this.http.post(this.constant.BASE_URL+this.constant.UPDATE_URL,data)
