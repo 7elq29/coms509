@@ -10,11 +10,10 @@ app = Flask(__name__)
 mysql = MySQL()
 CORS(app)
 # MySQL configurations
-app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = ''
-app.config['MYSQL_DATABASE_PORT'] = 3307
-app.config['MYSQL_DATABASE_DB'] = 'COMS509_Project'
-app.config['MYSQL_DATABASE_HOST'] = '127.0.0.1'
+app.config['MYSQL_DATABASE_USER'] = 'dbu509t04'
+app.config['MYSQL_DATABASE_PASSWORD'] = 't@haYu3up@qu'
+app.config['MYSQL_DATABASE_DB'] = 'db509t04'
+app.config['MYSQL_DATABASE_HOST'] = 'mysql-509.cs.iastate.edu'
 
 mysql.init_app(app)
 
@@ -140,5 +139,5 @@ def addPatient(mrid):
 		return jsonify(res)
 
 if __name__ == '__main__':
-	app.run(host='10.26.14.12')
+	app.run(host='10.29.180.123')
 	# app.run()
