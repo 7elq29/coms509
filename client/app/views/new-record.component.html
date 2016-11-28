@@ -69,11 +69,13 @@
                 <label for="MRNum" class="col-sm-3 control-label">MR Number</label>
                 <input type='text' class="form-control"  id="MRNum" [(ngModel)]="mr"/>
                 <label for="patientName" class="col-sm-3 control-label">Patient Name</label>
-                <input type='text' class="form-control"  id="patientName"/>
+                <input type='text' class="form-control"  id="patientName" [(ngModel)]="name"/>
                 <label for="ownerName" class="col-sm-3 control-label">Owner Name</label>
-                <input type='text' class="form-control"  id="ownerName"/>
+                <input type='text' class="form-control"  id="ownerName" [ngModel]="owner"/>
+                <div class="pull-right red new-record-alert">{{patientalert}}</div>
                 <button type="button" class="btn btn-primary margin-top-15" (click)="addPatient()">Sumbit</button>
             </div>
+
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->

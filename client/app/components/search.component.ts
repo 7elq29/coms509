@@ -49,11 +49,11 @@ export class SearchComponent implements OnInit{
             .subscribe((data) => this.handle(data));
     }
 
-    handleError(response:Response | any){
+    handleError(response:Response | any) {
         if (response.status == STATUS.OK) {
-            this.router.navigate(["/record",this.keyword]);
+            this.router.navigate(["/record", this.keyword]);
         } else {
-            this.http.post(this.constants.BASE_URL+this.constants.SEARCH_URL,{keyword:this.keyword})
+            this.http.post(this.constants.BASE_URL + this.constants.SEARCH_URL, {keyword: this.keyword})
                 .subscribe(
                     (data) => this.handleSearch(data)
                 )

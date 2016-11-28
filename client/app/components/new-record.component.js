@@ -24,6 +24,9 @@ var NewRecordComponent = (function () {
         this.tests = [];
         this.alert = "";
         this.available = false;
+        this.patientalert = "";
+        this.name = "";
+        this.owner = "";
         for (var _i = 0, _a = this.constants.tests; _i < _a.length; _i++) {
             var test = _a[_i];
             this.tests.push(new testrecord_1.TestRecord(test.abbr, "", test.hint, test.unit, null));
@@ -32,7 +35,29 @@ var NewRecordComponent = (function () {
     NewRecordComponent.prototype.testAvailable = function () {
         var _this = this;
         this.http.get(this.constants.BASE_URL + this.constants.DETAIL_URL + "/" + this.mr)
+            .catch(function (data) { return _this.handleError(data); })
             .subscribe(function (data) { return _this.handleTestAvailable(data); });
+    };
+    NewRecordComponent.prototype.handleError = function (data) {
+        $(this.newPatient.nativeElement).modal();
+    };
+    NewRecordComponent.prototype.addPatient = function () {
+        var _this = this;
+        if (this.name == "" || this.owner == "") {
+            this.patientalert = "Please enter name and ownername.";
+        }
+        else {
+            this.http.post(this.constants.BASE_URL + this.constants.ADD_PATIENT, { MRNo: this.mr, name: this.name, owner: this.owner })
+                .subscribe(function (data) { return _this.handleAddPatient(data); });
+        }
+    };
+    NewRecordComponent.prototype.handleAddPatient = function (response) {
+        if (response.status == angular_in_memory_web_api_1.STATUS.OK) {
+            $(this.newPatient.nativeElement).modal('hide');
+        }
+        else {
+            this.patientalert = "Error when adding patient, please try again";
+        }
     };
     NewRecordComponent.prototype.handleTestAvailable = function (data) {
         if (data.status == angular_in_memory_web_api_1.STATUS.NOT_FOUND) {
@@ -61,7 +86,7 @@ var NewRecordComponent = (function () {
         for (var _i = 0, _a = this.tests; _i < _a.length; _i++) {
             var test = _a[_i];
             if (test.value.trim() != "") {
-                values.push({ mid: this.constants.getTestByAbbr(test.abbr), testAbbr: test.abbr, value: test.value, time: time });
+                values.push({ mid: this.constants.getTestByAbbr(test.abbr).mid, testAbbr: test.abbr, value: test.value, time: time });
             }
         }
         if (values.length == 0) {
@@ -88,9 +113,6 @@ var NewRecordComponent = (function () {
     NewRecordComponent.prototype.onLablePrinted = function () {
         $(this.successModal.nativeElement).modal('hide');
         this.router.navigate(["/"]);
-    };
-    NewRecordComponent.prototype.addPatient = function () {
-        $(this.newPatient.nativeElement).modal('hide');
     };
     __decorate([
         core_1.ViewChild('date'), 

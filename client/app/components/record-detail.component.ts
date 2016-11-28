@@ -30,6 +30,7 @@ export class DetailComponent implements AfterViewInit{
     schedule:any[]=[];
     alert:string="";
 
+
     currentTime:any;
     currentAbbr:string;
     currentValue:string;
@@ -61,13 +62,22 @@ export class DetailComponent implements AfterViewInit{
         this.search(from+"",end+"");
     }
 
+
     search(start:string,end:string){
         if(start==null || start=="" || end==null || end==""){
             this.http.get(this.constant.BASE_URL+this.constant.DETAIL_URL+"/"+this.id)
                 .subscribe((data) => this.handle(data));
         }else{
             this.http.get(this.constant.BASE_URL+this.constant.DETAIL_URL+"/"+this.id+"?starttime="+start+"&endtime="+end)
+                .catch((data) => this.handleError(data))
                 .subscribe((data) => this.handle(data));
+        }
+    }
+
+    handleError(response:Response | any) {
+        if (response.status == STATUS.NOT_FOUND) {
+            this.table={};
+            this.schedule=[];
         }
     }
 
@@ -99,7 +109,7 @@ export class DetailComponent implements AfterViewInit{
     }
 
     goHome(){
-        this.router.navigate(['']);
+        this.router.navigate(['/']);
     }
 
     formatTime(timestamp):string{

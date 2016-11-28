@@ -20,6 +20,7 @@ var Constants = (function () {
         this.UPLOAD_RECORD_URL = "/add";
         this.DETAIL_URL = "/searchByMR";
         this.UPDATE_URL = "/update";
+        this.ADD_PATIENT = "/addpatient";
         this.LOGIN_ERROR = "Username or password is incorrect";
         this.UNKNOWN_ERROR = "Oops, some problem occurs. Please try again.";
         this.tests = [

@@ -11,6 +11,7 @@ export class Constants{
     public UPLOAD_RECORD_URL:string = "/add";
     public DETAIL_URL:string = "/searchByMR";
     public UPDATE_URL:string = "/update";
+    public ADD_PATIENT:string="/addpatient";
 
     public LOGIN_ERROR:string="Username or password is incorrect";
     public UNKNOWN_ERROR:string="Oops, some problem occurs. Please try again.";

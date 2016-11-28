@@ -53,7 +53,14 @@ var DetailComponent = (function () {
         }
         else {
             this.http.get(this.constant.BASE_URL + this.constant.DETAIL_URL + "/" + this.id + "?starttime=" + start + "&endtime=" + end)
+                .catch(function (data) { return _this.handleError(data); })
                 .subscribe(function (data) { return _this.handle(data); });
+        }
+    };
+    DetailComponent.prototype.handleError = function (response) {
+        if (response.status == angular_in_memory_web_api_1.STATUS.NOT_FOUND) {
+            this.table = {};
+            this.schedule = [];
         }
     };
     DetailComponent.prototype.isAdmin = function () {
@@ -85,7 +92,7 @@ var DetailComponent = (function () {
         this.schedule = this.schedule.sort(function (n1, n2) { return n2.getUTCMilliseconds() - n1.getUTCMilliseconds(); });
     };
     DetailComponent.prototype.goHome = function () {
-        this.router.navigate(['']);
+        this.router.navigate(['/']);
     };
     DetailComponent.prototype.formatTime = function (timestamp) {
         var date = new Date(timestamp * 1000);

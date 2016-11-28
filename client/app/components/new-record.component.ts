@@ -27,6 +27,9 @@ export class NewRecordComponent implements AfterViewInit{
     tests:TestRecord[]=[];
     alert="";
     available=false;
+    patientalert:string="";
+    name="";
+    owner="";
 
     constructor(private constants:Constants,
                 private el: ElementRef,
@@ -39,8 +42,31 @@ export class NewRecordComponent implements AfterViewInit{
 
     testAvailable():void{
         this.http.get(this.constants.BASE_URL+this.constants.DETAIL_URL+"/"+this.mr)
+            .catch((data) => this.handleError(data))
             .subscribe((data) => this.handleTestAvailable(data));
     }
+
+    handleError(data:Response):void{
+        $(this.newPatient.nativeElement).modal();
+    }
+
+    addPatient(){
+        if(this.name=="" || this.owner==""){
+            this.patientalert="Please enter name and ownername.";
+        }else{
+            this.http.post(this.constants.BASE_URL+this.constants.ADD_PATIENT,{MRNo: this.mr, name: this.name, owner: this.owner})
+                .subscribe((data) => this.handleAddPatient(data));
+        }
+    }
+
+    handleAddPatient(response:Response):void{
+        if(response.status==STATUS.OK){
+            $(this.newPatient.nativeElement).modal('hide');
+        }else{
+            this.patientalert="Error when adding patient, please try again";
+        }
+    }
+
 
     handleTestAvailable(data:Response):void{
         if(data.status==STATUS.NOT_FOUND){
@@ -69,7 +95,7 @@ export class NewRecordComponent implements AfterViewInit{
 
         for(let test of this.tests){
             if(test.value.trim()!=""){
-                values.push({mid:this.constants.getTestByAbbr(test.abbr),testAbbr:test.abbr,value:test.value,time:time});
+                values.push({mid:this.constants.getTestByAbbr(test.abbr).mid,testAbbr:test.abbr,value:test.value,time:time});
             }
         }
         if(values.length==0){
@@ -101,11 +127,6 @@ export class NewRecordComponent implements AfterViewInit{
         $(this.successModal.nativeElement).modal('hide');
         this.router.navigate(["/"]);
     }
-
-    addPatient():void{
-        $(this.newPatient.nativeElement).modal('hide');
-    }
-
 
 }
 
