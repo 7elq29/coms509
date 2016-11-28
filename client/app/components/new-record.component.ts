@@ -6,6 +6,7 @@ import {STATUS} from "angular-in-memory-web-api";
 import {TestRecord} from "./testrecord";
 import {Response} from "@angular/http";
 import {Route, Router} from "@angular/router";
+import {Observable} from "rxjs";
 /**
  * Created by Ken on 11/22/16.
  */
@@ -46,8 +47,9 @@ export class NewRecordComponent implements AfterViewInit{
             .subscribe((data) => this.handleTestAvailable(data));
     }
 
-    handleError(data:Response):void{
+    handleError(data:Response):Observable<Response>{
         $(this.newPatient.nativeElement).modal();
+        return null
     }
 
     addPatient(){

@@ -62,6 +62,7 @@ var DetailComponent = (function () {
             this.table = {};
             this.schedule = [];
         }
+        return null;
     };
     DetailComponent.prototype.isAdmin = function () {
         if (this.userService.getUser() == null)

@@ -49,7 +49,7 @@ export class SearchComponent implements OnInit{
             .subscribe((data) => this.handle(data));
     }
 
-    handleError(response:Response | any) {
+    handleError(response:Response | any):Observable<Response> {
         if (response.status == STATUS.OK) {
             this.router.navigate(["/record", this.keyword]);
         } else {
@@ -58,6 +58,7 @@ export class SearchComponent implements OnInit{
                     (data) => this.handleSearch(data)
                 )
         }
+        throw Observable.throw(null);
     }
 
     handle(response:Response) {

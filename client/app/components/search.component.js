@@ -16,6 +16,7 @@ var router_1 = require("@angular/router");
 var http_service_1 = require("../services/http.service");
 var Constants_1 = require("../services/Constants");
 var angular_in_memory_web_api_1 = require("angular-in-memory-web-api");
+var Observable_1 = require("rxjs/Observable");
 var SearchResult = (function () {
     function SearchResult(mr, name) {
         this.mr = mr;
@@ -57,6 +58,7 @@ var SearchComponent = (function () {
             this.http.post(this.constants.BASE_URL + this.constants.SEARCH_URL, { keyword: this.keyword })
                 .subscribe(function (data) { return _this.handleSearch(data); });
         }
+        throw Observable_1.Observable.throw(null);
     };
     SearchComponent.prototype.handle = function (response) {
         var _this = this;

@@ -7,6 +7,7 @@ import {Response} from "@angular/http";
 import {TestRecord} from "./testrecord";
 import "moment/moment";
 import {UserService} from "../services/user.service";
+import {Observable} from "rxjs";
 /**
  * Created by Ken on 11/26/16.
  */
@@ -74,11 +75,12 @@ export class DetailComponent implements AfterViewInit{
         }
     }
 
-    handleError(response:Response | any) {
+    handleError(response:Response | any) :Observable<Response>{
         if (response.status == STATUS.NOT_FOUND) {
             this.table={};
             this.schedule=[];
         }
+        return null;
     }
 
     isAdmin():boolean{

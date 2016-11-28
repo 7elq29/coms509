@@ -40,6 +40,7 @@ var NewRecordComponent = (function () {
     };
     NewRecordComponent.prototype.handleError = function (data) {
         $(this.newPatient.nativeElement).modal();
+        return null;
     };
     NewRecordComponent.prototype.addPatient = function () {
         var _this = this;
