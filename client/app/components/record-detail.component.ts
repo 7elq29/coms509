@@ -32,7 +32,7 @@ export class DetailComponent implements AfterViewInit{
     alert:string="";
 
 
-    currentTime:Date;
+    currentTime:any;
     currentAbbr:string;
     currentValue:string;
     changed:TestRecord[]=[];
