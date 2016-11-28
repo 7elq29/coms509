@@ -125,7 +125,7 @@ var DetailComponent = (function () {
         for (var _i = 0, _a = this.changed; _i < _a.length; _i++) {
             var test = _a[_i];
             data.test.push({
-                mid: this.constant.getTestByAbbr(test.abbr),
+                mid: this.constant.getTestByAbbr(test.abbr).mid,
                 testAbbr: test.abbr,
                 value: test.value,
                 time: test.time

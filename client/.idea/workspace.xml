@@ -33,13 +33,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new-record.component.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="new-record.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/components/new-record.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="72" column="25" selection-start-line="72" selection-start-column="25" selection-end-line="72" selection-end-column="25" />
+            <state relative-caret-position="-30">
+              <caret line="82" column="42" selection-start-line="82" selection-start-column="29" selection-end-line="82" selection-end-column="42" />
               <folding>
                 <element signature="e#424#462#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="record-detail.component.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/components/record-detail.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="402">
+              <caret line="143" column="63" selection-start-line="143" selection-start-column="63" selection-end-line="143" selection-end-column="63" />
+              <folding>
+                <element signature="e#0#86#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -101,10 +113,10 @@
         <option value="$PROJECT_DIR$/app/test/mock-http.service.ts" />
         <option value="$PROJECT_DIR$/app/components/search.component.ts" />
         <option value="$PROJECT_DIR$/app/views/record-detail.component.html" />
-        <option value="$PROJECT_DIR$/app/components/record-detail.component.ts" />
         <option value="$PROJECT_DIR$/app/views/new-record.component.html" />
         <option value="$PROJECT_DIR$/app/services/Constants.ts" />
         <option value="$PROJECT_DIR$/app/components/new-record.component.ts" />
+        <option value="$PROJECT_DIR$/app/components/record-detail.component.ts" />
       </list>
     </option>
   </component>
@@ -343,15 +355,15 @@
       <workItem from="1479761742282" duration="15330000" />
       <workItem from="1479864948979" duration="4548000" />
       <workItem from="1480026882584" duration="10197000" />
-      <workItem from="1480186979155" duration="33293000" />
+      <workItem from="1480186979155" duration="33744000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63642000" />
+    <option name="totallyTimeSpent" value="64093000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="796" extended-state="1" />
+    <frame x="0" y="0" width="1280" height="796" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.48968363" order="0" side_tool="false" content_ui="combo" />
@@ -790,16 +802,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/record-detail.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1815">
-          <caret line="121" column="30" selection-start-line="121" selection-start-column="30" selection-end-line="121" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#86#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/services/Constants.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -820,10 +822,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/components/new-record.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="72" column="25" selection-start-line="72" selection-start-column="25" selection-end-line="72" selection-end-column="25" />
+        <state relative-caret-position="-30">
+          <caret line="82" column="42" selection-start-line="82" selection-start-column="29" selection-end-line="82" selection-end-column="42" />
           <folding>
             <element signature="e#424#462#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/record-detail.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="402">
+          <caret line="143" column="63" selection-start-line="143" selection-start-column="63" selection-end-line="143" selection-end-column="63" />
+          <folding>
+            <element signature="e#0#86#0" expanded="true" />
           </folding>
         </state>
       </provider>

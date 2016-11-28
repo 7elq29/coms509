@@ -141,7 +141,7 @@ export class DetailComponent implements AfterViewInit{
         };
         for(let test of this.changed){
             data.test.push({
-                mid: this.constant.getTestByAbbr(test.abbr),
+                mid: this.constant.getTestByAbbr(test.abbr).mid,
                 testAbbr: test.abbr,
                 value: test.value,
                 time: test.time
