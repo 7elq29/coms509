@@ -132,6 +132,11 @@ def addPatient(mrid):
 		owner = dataDict["owner"]
 		con = mysql.get_db()
 		cur = con.cursor()
+		cur.execute("select count(*) from patient where patient.MRID = %s",[mrid])
+		count = cur.fetchone();
+		if count[0] < 1:
+			res = {"status":"error","message":"the patient already exists"}
+			return jsonify(res)
 		if mrid and name and owner:
 			cur.execute("insert into `patient`(MRID,PNAME,WNAME)values(%s,%s,%s)",[mrid,name,owner])
 			con.commit()
