@@ -129,7 +129,7 @@ def updateRecord():
 		return Response(status=404)
 
 @app.route('/addpatient',methods=['POST'])
-def addPatient(mrid):
+def addPatient():
 	if request.method == 'POST':
 		data = request.data
 		dataDict = json.loads(data)
@@ -140,7 +140,7 @@ def addPatient(mrid):
 		cur = con.cursor()
 		cur.execute("select count(*) from patient where patient.MRID = %s",[mrid])
 		count = cur.fetchone();
-		if count[0] < 1:
+		if count[0] >= 1:
 			res = {"status":"error","message":"the patient already exists"}
 			return jsonify(res)
 		if mrid and name and owner:
