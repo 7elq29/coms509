@@ -56,8 +56,8 @@ def searchByMR(mrid):
 		endTime = request.args.get("endtime")
 		cur = mysql.connect().cursor()
 		if startTime and endTime:
-			startT = datetime.datetime.fromtimestamp(float(startTime))
-			endT = datetime.datetime.fromtimestamp(float(endTime))
+			startT = datetime.datetime.utcfromtimestamp(float(startTime))
+			endT = datetime.datetime.utcfromtimestamp(float(endTime))
 			cur.execute("select * from test, merit, patient where test.MRID = patient.MRID and test.MID = merit.MID and patient.MRID = %s and test.DATE >=%s and test.DATE<=%s",[mrid,startT,endT])
 		else :
 			cur.execute("select * from test, merit, patient where test.MRID = patient.MRID and test.MID = merit.MID and patient.MRID = %s ",[mrid])
