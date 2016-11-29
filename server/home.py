@@ -119,9 +119,14 @@ def updateRecord():
 		for row in dataList:
 			print str(row)
 			dateTime = datetime.datetime.utcfromtimestamp(float(row["time"]))
-			print "dateTime:"+str(dateTime)
-			cur.execute("update test set test.TESTVALUE = %s where test.MRID = %s and test.MID = %s and test.DATE = %s",[row["value"],mrid,row["mid"],dateTime])
-			con.commit()
+			value = row["value"]
+			if value:
+				print "dateTime:"+str(dateTime)
+				cur.execute("update test set test.TESTVALUE = %s where test.MRID = %s and test.MID = %s and test.DATE = %s",[row["value"],mrid,row["mid"],dateTime])
+				con.commit()
+			else :
+				cur.execute("delete from test where test.MRID = %s and test.MID = %s and test.DATE = %s",[mrid,row["mid"],dateTime])
+				con.commit()
 		res = {"status":"success","message":""}
 		return jsonify(res)
 	else :
