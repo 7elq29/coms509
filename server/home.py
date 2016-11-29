@@ -5,6 +5,7 @@ from flask import jsonify
 from flask_cors import CORS, cross_origin
 import json
 import datetime
+import pytz
 
 app = Flask(__name__)
 mysql = MySQL()
@@ -16,6 +17,8 @@ app.config['MYSQL_DATABASE_DB'] = 'db509t04'
 app.config['MYSQL_DATABASE_HOST'] = 'mysql-509.cs.iastate.edu'
 
 mysql.init_app(app)
+
+GMT = pytz.timezone('America/Chicago')
 
 @app.route('/')
 def hello_world():
@@ -115,7 +118,8 @@ def updateRecord():
 			return Response(status=404)
 		for row in dataList:
 			print str(row)
-			dateTime = datetime.datetime.fromtimestamp(float(row["time"]))
+			utcTime = datetime.datetime.fromtimestamp(float(row["time"]))
+			dateTime = utc_to_local(utcTime)
 			print "dateTime:"+str(dateTime)
 			cur.execute("update test set test.TESTVALUE = %s where test.MRID = %s and test.MID = %s and test.DATE = %s",[row["value"],mrid,row["mid"],dateTime])
 			con.commit()
@@ -144,6 +148,10 @@ def addPatient(mrid):
 			con.commit()
 		res = {"status":"success","message":""}
 		return jsonify(res)
+
+def utc_to_local(utcTime):
+	dateTime = utcTime.replace(tzinfo = pytz.utc).astimezone(GMT)
+	return dateTime
 
 if __name__ == '__main__':
 	app.run()
