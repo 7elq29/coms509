@@ -119,8 +119,7 @@ def updateRecord():
 		for row in dataList:
 			print str(row)
 			dateTime = datetime.datetime.utcfromtimestamp(float(row["time"]))
-			value = row["value"]
-			if value:
+			if 'value' in row:
 				print "dateTime:"+str(dateTime)
 				cur.execute("update test set test.TESTVALUE = %s where test.MRID = %s and test.MID = %s and test.DATE = %s",[row["value"],mrid,row["mid"],dateTime])
 				con.commit()
