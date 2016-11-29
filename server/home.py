@@ -91,8 +91,8 @@ def addRecord(mrid):
 		if count[0] < 1:
 			return Response(status=404)
 		for row in dataList:
-			
-			dateTime = datetime.datetime.fromtimestamp(float(row["time"]/1000))
+			print str(row)
+			dateTime = datetime.datetime.utcfromtimestamp(float(row["time"]/1000))
 			cur.execute("insert into test(MRID,MID,TESTVALUE,`DATE`) values(%s,%s,%s,%s)",[mrid,row["mid"],row["value"],dateTime])
 			con.commit()
 			res = cur.fetchone()
@@ -118,8 +118,7 @@ def updateRecord():
 			return Response(status=404)
 		for row in dataList:
 			print str(row)
-			utcTime = datetime.datetime.fromtimestamp(float(row["time"]))
-			dateTime = utc_to_local(utcTime)
+			dateTime = datetime.datetime.utcfromtimestamp(float(row["time"]))
 			print "dateTime:"+str(dateTime)
 			cur.execute("update test set test.TESTVALUE = %s where test.MRID = %s and test.MID = %s and test.DATE = %s",[row["value"],mrid,row["mid"],dateTime])
 			con.commit()
@@ -151,7 +150,7 @@ def addPatient():
 
 def utc_to_local(utcTime):
 	dateTime = utcTime.replace(tzinfo = pytz.utc).astimezone(GMT)
-	return dateTime
+	return dateTime.strftime("%Y-%m-%d %H:%M:%S")
 
 if __name__ == '__main__':
 	app.run()
