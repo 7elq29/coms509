@@ -107,7 +107,7 @@ export class DetailComponent implements AfterViewInit{
                 this.table[date][test.testAbbr]=new TestRecord(test.testAbbr,test.value,"",test.unit,date);
             }
         }
-        this.schedule = this.schedule.sort((n1:Date,n2:Date)=> n2.getUTCMilliseconds()-n1.getUTCMilliseconds());
+        this.schedule = this.schedule.sort((n1:Date,n2:Date)=> n2.getTime()-n1.getTime());
     }
 
     goHome(){

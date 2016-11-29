@@ -90,7 +90,7 @@ var DetailComponent = (function () {
                 this.table[date][test.testAbbr] = new testrecord_1.TestRecord(test.testAbbr, test.value, "", test.unit, date);
             }
         }
-        this.schedule = this.schedule.sort(function (n1, n2) { return n2.getUTCMilliseconds() - n1.getUTCMilliseconds(); });
+        this.schedule = this.schedule.sort(function (n1, n2) { return n2.getTime() - n1.getTime(); });
     };
     DetailComponent.prototype.goHome = function () {
         this.router.navigate(['/']);
